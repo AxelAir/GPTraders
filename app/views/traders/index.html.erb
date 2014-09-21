@@ -1,0 +1,23 @@
+<h1>Listing traders</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @traders.each do |trader| %>
+  <tr>
+    <td><%= trader.name %></td>
+    <td><%= link_to 'Show', trader %></td>
+    <td><%= link_to 'Edit', edit_trader_path(trader) %></td>
+    <td><%= link_to 'Destroy', trader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trader', new_trader_path %>

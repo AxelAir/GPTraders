@@ -1,4 +1,15 @@
 GPTraders::Application.routes.draw do
+  get "welcome/home"
+
+  resources :trades
+
+
+  resources :stocks
+
+
+  resources :traders
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
