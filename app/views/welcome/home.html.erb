@@ -1,2 +1,36 @@
-<h1>Welcome#home</h1>
-<p>Find me in app/views/welcome/home.html.erb</p>
+<% provide(:title, 'Home') %>
+<% if(Trader.count > 0) %>
+	<div class="center hero-unit">
+		<h1>List of the Traders</h1>
+	</div>
+	<table class="table table-hover margin-tb">
+	    <thead>
+	        <tr>
+	            <th>id</th>
+	            <th>Trader</th>
+	            <th>Aggregate Sum</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<% Trader.find_each do |trader| %>
+		        <tr>
+		            <td><%= trader.id %></td>
+		            <td><%= trader.name %></td>
+		            <td>30</td>
+		        </tr>
+	        <% end %>
+	    </tbody>
+	</table>
+	<div class="center">
+		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-default", role: "button" %>
+		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-default", role: "button" %>
+		<%= link_to "Add a Transaction", new_trade_path, class: "btn btn-primary", role: "button" %>
+	</div>
+<% else %>
+	<div class="center hero-unit">
+		<h1>Add a Trader to begin</h1>
+	</div>
+	<div class="center">
+		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-primary", role: "button" %>
+	</div>
+<% end %>	

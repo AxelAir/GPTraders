@@ -1,6 +1,6 @@
 GPTraders::Application.routes.draw do
-  get "welcome/home"
-
+  root to: 'welcome#home'
+  
   resources :trades
 
 

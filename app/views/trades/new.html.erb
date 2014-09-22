@@ -1,5 +1,6 @@
-<h1>New trade</h1>
+<h1 class="margin-tb">New trade</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', trades_path %>
+<%= Trader.find
+<%= link_to 'Back', traders_path, class: "btn btn-default", role: "button" %>

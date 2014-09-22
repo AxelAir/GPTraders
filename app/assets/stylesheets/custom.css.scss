@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.center {
+	text-align: center;
+	h1 {
+		margin-bottom: 30px;
+	}
+}
+
+.margin-tb {
+	margin: 20px 0 40px 0;
+}

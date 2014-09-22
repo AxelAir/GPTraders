@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :quantity %><br />
-    <%= f.number_field :quantity %>
+  <div class="field row">
+    <div class="col-xs-3">
+      <div class="input-group">
+        <%= f.number_field :trader_id, class: "form-control", placeholder: "Trader" %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="input-group">
+        <%= f.number_field :stock_id, class: "form-control", placeholder: "Stock" %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <%= f.text_field :price, class: "form-control", placeholder: "Price (US Dollar)" %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="input-group">
+        <%= f.text_field :quantity, class: "form-control", placeholder: "Quantity" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :trader_id %><br />
-    <%= f.number_field :trader_id %>
-  </div>
-  <div class="field">
-    <%= f.label :stock_id %><br />
-    <%= f.number_field :stock_id %>
-  </div>
+  <hr>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Trade', class: "btn btn-success", role: "button" %>
   </div>
 <% end %>
