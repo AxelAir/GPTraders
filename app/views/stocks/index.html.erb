@@ -1,23 +1,27 @@
-<h1>Listing stocks</h1>
+<div class="center hero-unit">
+    <h1>Listing stocks</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table table-hover margin-tb">
+  <thead class="h3">
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
 
 <% @stocks.each do |stock| %>
-  <tr>
-    <td><%= stock.name %></td>
-    <td><%= link_to 'Show', stock %></td>
-    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-    <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td class="h4"><%= stock.name %></td>
+      <td><%= link_to 'Show', stock, class: "btn btn-default", role: "button" %>
+      <%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-warning", role: "button" %>
+      <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", role: "button" %></td>
+    </tr>
+  </tbody>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Stock', new_stock_path %>
+<div class="center">
+  <%= link_to 'New Stock', new_stock_path, class: "btn btn-primary", role: "button" %>
+</div>

@@ -1,7 +1,7 @@
 <% provide(:title, 'Home') %>
 <% if(Trader.count > 0) %>
 	<div class="center hero-unit">
-		<h1>List of the Traders</h1>
+		<h1>List of the Traders & Aggregate Sum</h1>
 	</div>
 	<table class="table table-hover margin-tb">
 	    <thead>
@@ -16,7 +16,7 @@
 		        <tr>
 		            <td><%= trader.id %></td>
 		            <td><%= trader.name %></td>
-		            <td>30</td>
+		            <td>0</td>
 		        </tr>
 	        <% end %>
 	    </tbody>

@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <h4 class="margin-tb">
   <b>Name:</b>
   <%= @stock.name %>
+  </h4>
 </p>
 
 
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+<%= link_to 'Edit', edit_stock_path(@stock), class: "btn btn-warning", role: "button" %>
+<%= link_to_function 'Back', "history.back()", class: "btn btn-default", role: "button" %>
+<%= link_to 'Home', root_path, class: "btn btn-primary", role: "button" %>

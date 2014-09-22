@@ -1,9 +1,10 @@
 GPTraders::Application.routes.draw do
   root to: 'welcome#home'
   
-  resources :trades
-
-
+  resources :trades do
+    get :autocomplete_trader_name, :on => :collection
+    get :autocomplete_stock_name, :on => :collection
+  end
   resources :stocks
 
 
