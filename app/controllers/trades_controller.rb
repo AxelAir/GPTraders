@@ -1,4 +1,6 @@
 class TradesController < ApplicationController
+  autocomplete :trader, :name
+  autocomplete :stock, :name
   # GET /trades
   # GET /trades.json
   def index

@@ -1,5 +1,30 @@
-<h1 class="margin-tb">New trade</h1>
+<% provide(:title, 'New Trade') %>
+<% if(Trader.count == 0 && Stock.count == 0) %>
+	<h3 class="margin-tb">Before adding a new Transaction, you has to create a Trader and at least one Stock.</h3>
+	<div class="center">
+		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-primary", role: "button" %>
+		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-default", role: "button" %>
+	</div>
+<% elsif(Trader.count == 0) %>
+	<h3 class="margin-tb">Before adding a new Transaction, you has to create a Trader.</h3>
+	<div class="center">
+		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-primary", role: "button" %>
+	</div>
+<% elsif(Stock.count == 0) %>
+	<h3 class="margin-tb">Before adding a new Transaction, you has to create at least one Stock.</h3>
+	<div class="center">
+		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-default", role: "button" %>
+	</div>
+<% else %>
+	<h1 class="margin-tb">New Trade</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
+<% end %>
 
+<%= link_to_function 'Back', "history.back(-2)", class: "btn btn-default", role: "button" %>
+<%= link_to 'Home', root_path, class: "btn btn-primary", role: "button" %>
+
+<<<<<<< HEAD
 <%= link_to 'Back', traders_path, class: "btn btn-default", role: "button" %>
+=======
+>>>>>>> autocompletion

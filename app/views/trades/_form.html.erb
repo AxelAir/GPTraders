@@ -11,24 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+        <%= f.hidden_field :trader_id, :id => "real_trader_id" %>
+        <%= autocomplete_field_tag 'trader_name', '', autocomplete_trader_name_trades_path, :id_element => '#real_trader_id', class: "form-control", placeholder: "Trader" %>
+  </div>
+  <div class="field">
+        <%= f.hidden_field :stock_id, :id => "real_stock_id" %>
+        <%= autocomplete_field_tag 'stock_name', '', autocomplete_stock_name_trades_path, :id_element => '#real_stock_id', class: "form-control", placeholder: "Stock" %>
+  </div>
   <div class="field row">
-    <div class="col-xs-3">
-      <div class="input-group">
-        <%= f.number_field :trader_id, class: "form-control", placeholder: "Trader" %>
-      </div>
-    </div>
-    <div class="col-xs-3">
-      <div class="input-group">
-        <%= f.number_field :stock_id, class: "form-control", placeholder: "Stock" %>
-      </div>
-    </div>
-    <div class="col-xs-3">
+    <div class="col-xs-4">
       <div class="input-group">
         <span class="input-group-addon">$</span>
         <%= f.text_field :price, class: "form-control", placeholder: "Price (US Dollar)" %>
       </div>
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-4">
       <div class="input-group">
         <%= f.text_field :quantity, class: "form-control", placeholder: "Quantity" %>
       </div>

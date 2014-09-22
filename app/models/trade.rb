@@ -4,9 +4,17 @@ class Trade < ActiveRecord::Base
   belongs_to :trader
   belongs_to :stock
  
-  validates :price, numericality: {greater_than_or_equal_to: 0, message: "must be greater than zero"}
-  validates :quantity, numericality: {only_integer: true}
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, message: "must be greater than zero with 2 decimal"}
+  validates :quantity, numericality: {only_integer: true, message: "must be an integer"}
   validate :quantity_is_not_null
+
+
+  validates :stock_id, presence: true, numericality: { only_integer: true }
+  validates :trader_id, presence: true, numericality: { only_integer: true }
+
+  validate :validate_stock_id
+  validate :validate_trader_id
+
 
   private
   
@@ -15,4 +23,15 @@ class Trade < ActiveRecord::Base
       errors.add(:quantity, "cannot be null") 
     end 
   end
+  
+  def validate_stock_id
+    self.errors.messages.delete(:stock_id)
+    errors.add(:stock_name, "is invalid") unless Stock.exists?(self.stock_id)
+  end
+  
+  def validate_trader_id
+    self.errors.messages.delete(:trader_id)
+    errors.add(:trader_name, "is invalid") unless Trader.exists?(self.trader_id)
+  end
+
 end
