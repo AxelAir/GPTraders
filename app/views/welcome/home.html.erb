@@ -1,14 +1,14 @@
 <% provide(:title, 'Home') %>
 <% if(Trader.count > 0) %>
 	<div class="center hero-unit">
-		<h1>List of the Traders & Aggregate Sum</h1>
+		<h1>Total value of Traders' portfolio</h1>
 	</div>
 	<table class="table table-hover margin-tb">
 	    <thead>
 	        <tr>
 	            <th>id</th>
 	            <th>Trader</th>
-	            <th>Aggregate Sum (USD)</th>
+	            <th>Total portfolio value (USD)</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -16,20 +16,27 @@
             joins:  "LEFT JOIN `trades` ON trades.trader_id = traders.id" ,
             select: "traders.id, traders.name, sum(trades.quantity*trades.price) as sumQP", 
             group:  "trades.trader_id").sort_by{ |t| t.sumQP.to_i }.reverse.each do |trader| %>
+            <% #INNER JOIN to find only traders with trade(s) %>
 		        <tr>
 		            <td><%= trader.id %></td>
 		            <td><%= link_to trader.name, welcomes_trader_path(trader) %></td>
 		            <td><%= trader[:sumQP].to_i %></td>
-		            <!-- Trade.where(trader_id: trader.id).sum("price * quantity") -->
+		            <% #Trade.where(trader_id: trader.id).sum("price * quantity") %>
 		        </tr>
 	        <% end %>
 	    </tbody>
 	</table>
 	<div class="center">
-		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-default", role: "button" %>
-		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-default", role: "button" %>
-		<%= link_to "Add a Trade", new_trade_path, class: "btn btn-primary", role: "button" %>
+		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-warning", role: "button" %>
+		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-warning", role: "button" %>
+		<%= link_to "Add a Trade", new_trade_path, class: "btn btn-success", role: "button" %>
 	</div>
+	<div class="center margin-tb">
+		<%= link_to "Show Traders", traders_path, class: "btn btn-default", role: "button" %>
+		<%= link_to "Show Stocks", stocks_path, class: "btn btn-default", role: "button" %>
+		<%= link_to "Show Trades", trades_path, class: "btn btn-default", role: "button" %>
+	</div>
+
 <% else %>
 	<div class="center hero-unit">
 		<h1>Add a Trader to begin</h1>
