@@ -8,14 +8,14 @@
 	        <tr>
 	            <th>id</th>
 	            <th>Trader</th>
-	            <th>Aggregate Sum</th>
+	            <th>Aggregate Sum (USD)</th>
 	        </tr>
 	    </thead>
 	    <tbody>
 	    	<% Trader.find(:all,
             joins:  "LEFT JOIN `trades` ON trades.trader_id = traders.id" ,
             select: "traders.id, traders.name, sum(trades.quantity*trades.price) as sumQP", 
-            group:  "trades.trader_id").sort_by{ |t| t.sumQP.to_i }.each do |trader| %>
+            group:  "trades.trader_id").sort_by{ |t| t.sumQP.to_i }.reverse.each do |trader| %>
 		        <tr>
 		            <td><%= trader.id %></td>
 		            <td><%= link_to trader.name, welcomes_trader_path(trader) %></td>
@@ -28,7 +28,7 @@
 	<div class="center">
 		<%= link_to "Add a Trader", new_trader_path, class: "btn btn-default", role: "button" %>
 		<%= link_to "Add a Stock", new_stock_path, class: "btn btn-default", role: "button" %>
-		<%= link_to "Add a Transaction", new_trade_path, class: "btn btn-primary", role: "button" %>
+		<%= link_to "Add a Trade", new_trade_path, class: "btn btn-primary", role: "button" %>
 	</div>
 <% else %>
 	<div class="center hero-unit">

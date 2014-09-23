@@ -5,21 +5,23 @@
 <table class="table table-hover margin-tb">
   <thead class="h3">
     <tr>
-    <th>Quantity</th>
-    <th>Price</th>
     <th>Trader</th>
     <th>Stock</th>
+    <th>Quantity</th>
+    <th>Share price (USD)</th>
+    <th>Date</th>
     <th></th>
     </tr>
   </thead>
 
-<% @trades.order('created_at DESC').each do |trade| %>
+<% @trades.order('updated_at DESC').each do |trade| %>
   <tbody>
     <tr>
-      <td><%= trade.quantity %></td>
-      <td><%= trade.price %></td>
       <td><%= trade.trader.name %></td>
       <td><%= trade.stock.name %></td>
+      <td><%= trade.quantity %></td>
+      <td><%= trade.price %></td>
+      <td><%= trade.updated_at %></td>
       <td><%= link_to 'Show', trade, class: "btn btn-default", role: "button" %>
       <%= link_to 'Edit', edit_trade_path(trade), class: "btn btn-warning", role: "button" %>
       <%= link_to 'Destroy', trade, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", role: "button" %></td>
