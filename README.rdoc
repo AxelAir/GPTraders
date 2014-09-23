@@ -1,3 +1,3 @@
 == Welcome to GPTraders
 
-First RoR App
+This is my first RoR App.
