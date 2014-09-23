@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @trade %> |
-<%= link_to 'Back', trades_path %>
+<%= link_to 'Show', @trade, class: "btn btn-default", role: "button" %>
+<%= link_to_function 'Back', "history.back()", class: "btn btn-default", role: "button" %>
+<%= link_to 'Home', root_path, class: "btn btn-primary", role: "button" %>

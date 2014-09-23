@@ -4,7 +4,7 @@ class Trade < ActiveRecord::Base
   belongs_to :trader
   belongs_to :stock
  
-  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, message: "must be greater than zero with 2 decimal"}
+  validates :price, :numericality => {:greater_than => 0, message: "must be greater than zero"}
   validates :quantity, numericality: {only_integer: true, message: "must be an integer"}
   validate :quantity_is_not_null
 
@@ -15,6 +15,12 @@ class Trade < ActiveRecord::Base
   validate :validate_stock_id
   validate :validate_trader_id
 
+  def trader_name
+    (trader_id.present?) ? Trader.find(trader_id).name : ""
+  end
+  def stock_name
+    (stock_id.present?) ? Stock.find(stock_id).name : ""
+  end
 
   private
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140921153220) do
+ActiveRecord::Schema.define(:version => 20140922231953) do
 
   create_table "stocks", :force => true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20140921153220) do
 
   create_table "trades", :force => true do |t|
     t.integer  "quantity"
-    t.integer  "price"
+    t.decimal  "price"
     t.integer  "trader_id"
     t.integer  "stock_id"
     t.datetime "created_at", :null => false

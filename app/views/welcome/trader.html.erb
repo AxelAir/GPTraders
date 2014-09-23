@@ -13,7 +13,7 @@
     </tr>
   </thead>
 
-<% @trades.each do |trade| %>
+<% @trades.order('created_at DESC').each do |trade| %>
   <tbody>
     <tr>
       <td><%= trade.quantity %></td>
@@ -29,5 +29,5 @@
 </table>
 
 <div class="center">
-  <%= link_to 'New Trade', new_trade_path, class: "btn btn-primary", role: "button" %>
+  <%= link_to 'Home', root_path, class: "btn btn-primary", role: "button" %>
 </div>

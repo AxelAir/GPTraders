@@ -12,11 +12,15 @@
 	        </tr>
 	    </thead>
 	    <tbody>
-	    	<% Trader.find_each do |trader| %>
+	    	<% Trader.find(:all,
+            joins:  "LEFT JOIN `trades` ON trades.trader_id = traders.id" ,
+            select: "traders.id, traders.name, sum(trades.quantity*trades.price) as sumQP", 
+            group:  "trades.trader_id").sort_by{ |t| t.sumQP.to_i }.each do |trader| %>
 		        <tr>
 		            <td><%= trader.id %></td>
-		            <td><%= trader.name %></td>
-		            <td>0</td>
+		            <td><%= link_to trader.name, welcomes_trader_path(trader) %></td>
+		            <td><%= trader[:sumQP].to_i %></td>
+		            <!-- Trade.where(trader_id: trader.id).sum("price * quantity") -->
 		        </tr>
 	        <% end %>
 	    </tbody>

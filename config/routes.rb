@@ -1,10 +1,16 @@
 GPTraders::Application.routes.draw do
   root to: 'welcome#home'
-  
+  #match 'welcome/trader/:id', to: 'welcome#trader', :as :welcomes_welcome
+
+  match 'welcome/trader/:id', :controller => 'welcome', :action => 'trader', :id => /[0-9]+/i, as: :welcomes_trader
+
+
   resources :trades do
     get :autocomplete_trader_name, :on => :collection
     get :autocomplete_stock_name, :on => :collection
   end
+
+
   resources :stocks
 
 

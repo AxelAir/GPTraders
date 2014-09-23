@@ -13,11 +13,11 @@
 
   <div class="field">
         <%= f.hidden_field :trader_id, :id => "real_trader_id" %>
-        <%= autocomplete_field_tag 'trader_name', '', autocomplete_trader_name_trades_path, :id_element => '#real_trader_id', class: "form-control", placeholder: "Trader" %>
+        <%= autocomplete_field_tag 'trader_name', @trade.trader_name, autocomplete_trader_name_trades_path, :id_element => '#real_trader_id', class: "form-control", placeholder: "Trader" %>
   </div>
   <div class="field">
         <%= f.hidden_field :stock_id, :id => "real_stock_id" %>
-        <%= autocomplete_field_tag 'stock_name', '', autocomplete_stock_name_trades_path, :id_element => '#real_stock_id', class: "form-control", placeholder: "Stock" %>
+        <%= autocomplete_field_tag 'stock_name', @trade.stock_name, autocomplete_stock_name_trades_path, :id_element => '#real_stock_id', class: "form-control", placeholder: "Stock" %>
   </div>
   <div class="field row">
     <div class="col-xs-4">
@@ -34,6 +34,6 @@
   </div>
   <hr>
   <div class="actions">
-    <%= f.submit 'Create Trade', class: "btn btn-success", role: "button" %>
+    <%= f.submit 'Save Trade', class: "btn btn-success", role: "button" %>
   </div>
 <% end %>
